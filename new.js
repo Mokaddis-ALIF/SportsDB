@@ -33,6 +33,7 @@ const searchTeam = () => {
 
 	//Clear input
 	searchField.value = '';
+	//teams
 	fetch(
 		`https://www.thesportsdb.com/api/v1/json/1/searchteams.php?t=${searchFieldTxt}`
 	)
@@ -40,16 +41,19 @@ const searchTeam = () => {
 		.then((data) => {
 			displaySearchResults(data.teams);
 		});
+	//players
+	resultsNow(searchFieldTxt);
 };
+//search results for team
 const displaySearchResults = (teams) => {
 	const searchResults = document.getElementById('search-result');
-	searchResults.innerHTML = '';
+	searchResults.innerHTML = ``;
 
 	// searchResult
 	for (const team of teams) {
 		const div = document.createElement('div');
 		div.classList.add('row');
-		console.log(team.idTeam);
+
 		div.innerHTML = `<div onclick="teamInfo(${team.idTeam})"
 					class="
 						col-md-6
@@ -113,11 +117,13 @@ const displaySearchResults = (teams) => {
 		searchResults.appendChild(div);
 	}
 };
+//teaminfo drom search results
 const teamInfo = (teamId) => {
 	fetch(`https://www.thesportsdb.com/api/v1/json/1/lookupteam.php?id=${teamId}`)
 		.then((res) => res.json())
 		.then((data) => teamInfoResultsDisplay(data.teams[0]));
 };
+//teaminfo drom search results and display
 const teamInfoResultsDisplay = (team) => {
 	const teamInfoResults = document.getElementById('teamInfo-results');
 	teamInfoResults.innerHTML = '';
@@ -178,4 +184,74 @@ const teamInfoResultsDisplay = (team) => {
 						<p class="lead pt-4">${team.intStadiumCapacity},${team.strStadiumLocation}</p>
 					</div>`;
 	teamInfoResults.appendChild(div);
+};
+//Players result display
+const resultsNow = (data) => {
+	fetch(`https://www.thesportsdb.com/api/v1/json/1/searchplayers.php?p=${data}`)
+		.then((res) => res.json())
+		.then((data) => {
+			resultsNowDisplay(data.player);
+		});
+};
+
+const resultsNowDisplay = (players) => {
+	// console.log(players);
+	const playerResults = document.getElementById('player-results');
+	playerResults.innerHTML = '';
+	for (const player of players) {
+		// console.log(player);
+		const div = document.createElement('div');
+		div.classList.add('row');
+		div.innerHTML = `<div class="col-md-8 py-2 pb-2 my-2 border-end-0
+						border border-4
+						rounded-end" onclick="location.href='https://www.google.com/';">
+					<div class="row d-flex flex-row">
+						<div class="col-md-6">
+							<img
+								class="img-fluid"
+								src="${player.strThumb}"
+								
+							/>
+						</div>
+						<div class="col-md-6">
+							<img
+								class="img-fluid"
+								src="${player.strCutout}"
+								
+							/>
+						</div>
+					</div>
+				</div>
+				<div
+					class="
+						col-md-4
+						d-flex
+						flex-column
+						justify-content-center
+						align-items-center
+						py-2
+						pb-2
+						my-2
+						border-start-0
+						border border-4
+						rounded-start
+						
+					"
+				>
+					<h3><span class="fw-bold">Name:</span> ${player.strPlayer}</h3>
+			<h4>
+				<span class="fw-bold">Nationality:</span> ${player.strNationality}
+			</h4>
+			<h4><span class="fw-bold">Club:</span> ${player.strTeam}</h4>
+			<h5><span class="fw-bold">Date of Birth:</span> ${player.dateBorn}</h5>
+			<h5>
+				<span class="fw-bold">Birth Location:</span> ${player.strBirthLocation}
+			</h5>
+			<h5><span class="fw-bold">Number:</span> ${player.strNumber}</h5>
+			<h5><span class="fw-bold">Gender:</span> ${player.strGender}</h5>
+			<h5><span class="fw-bold">Height:</span> ${player.strHeight}</h5>
+			<h5><span class="fw-bold">Weight:</span> ${player.strWeight}</h5>
+				</div>`;
+		playerResults.appendChild(div);
+	}
 };
