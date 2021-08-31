@@ -1,10 +1,6 @@
 const searchTeam = () => {
 	const searchField = document.getElementById('search-field');
 	const searchFieldTxt = searchField.value;
-	// const newtxt = searchFieldTxt.replace(
-	// 	searchFieldTxt[0],
-	// 	searchFieldTxt[0].toUpperCase()
-	// );
 
 	//Clear input
 	searchField.value = '';

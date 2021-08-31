@@ -22,12 +22,27 @@
 		/>
 
 		<title>SporstDb!</title>
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;1,300&display=swap');
+			body {
+				box-sizing: border-box;
+				margin: 0;
+				font-family: 'Poppins', sans-serif;
+			}
+			article {
+				min-height: 350px;
+			}
+		</style>
 	</head>
-	<body>
+	<body class="bg-success">
 		<header>
 			<nav class="navbar navbar-expand-lg navbar-light bg-dark text-white">
-				<div class="container-fluid">
-					<a class="navbar-brand text-white" href="#">The SportsDB</a>
+				<div class="container">
+					<a class="navbar-brand text-white w-25" href="#"
+						><img
+							class="img-fluid w-75"
+							src="https://www.thesportsdb.com/images/logo32.png"
+					/></a>
 					<button
 						class="navbar-toggler"
 						type="button"
@@ -40,7 +55,7 @@
 						<span class="navbar-toggler-icon"></span>
 					</button>
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
-						<ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+						<ul class="navbar-nav mb-2 mb-lg-0">
 							<li class="nav-item dropdown">
 								<a
 									class="nav-link dropdown-toggle text-white"
@@ -103,30 +118,280 @@
 							</li>
 							<li class="nav-item">
 								<a class="nav-link text-white" aria-current="page" href="#"
+									>Forum</a
+								>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link text-white" aria-current="page" href="#"
 									>Login</a
 								>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link text-white" href="#">Signup</a>
 							</li>
+							<div class="icon d-flex flex-row align-items-center">
+								<a class="mx-3" href=""
+									><img
+										src="https://www.thesportsdb.com/images/facebook_icon.png"
+								/></a>
+
+								<a class="mx-3" href=""
+									><img
+										src="https://www.thesportsdb.com/images/discord_icon.png"
+								/></a>
+
+								<a class="mx-3" href=""
+									><img
+										src="https://www.thesportsdb.com/images/twitter_icon.png"
+								/></a>
+							</div>
 						</ul>
-						<form class="d-flex">
+						<!-- <form class="d-flex me-4">
 							<input
-								class="form-control me-2"
+								class="form-control"
 								type="search"
 								placeholder="Search"
 								aria-label="Search"
-							/>
-							<button class="btn btn-outline-success" type="submit">
+							/> -->
+						<!-- <button class="btn btn-outline-success" type="submit">
 								Search
-							</button>
-						</form>
+							</button> -->
+						<!-- </form> -->
 					</div>
 				</div>
 			</nav>
 		</header>
+		<article>
+			<div class="container py-3">
+				<div class="row">
+					<div class="col-md-3">
+						<img src="https://www.thesportsdb.com/images/main12.png" />
+					</div>
+					<div
+						class="
+							col-md-6
+							d-flex
+							flex-column
+							justify-content-center
+							align-items-center
+						"
+					>
+						<h1>Welcome to TheSportsDB</h1>
+						<p>
+							An open, crowd-sourced database of sports artwork and metadata
+							with a free API. The content here is only possible thanks to the
+							hard work of our users. If you like the site, please consider
+							registering as an editor or click below...
+						</p>
+						<img
+							class="img-fluid w-50"
+							src="https://www.thesportsdb.com/images/patreon_logo.png"
+							alt=""
+						/>
+					</div>
+					<div class="col-md-3">
+						<img src="https://www.thesportsdb.com/images/main224.png" />
+					</div>
+				</div>
+			</div>
+		</article>
+		<!-- onclick with another page -->
+		<!-- <button
+			onclick="location.href='team.html',teamInfo(1);"
+			class="btn btn-danger"
+		>
+			okkkkkkkkk
+		</button> -->
+		<main class="container">
+			<div class="w-75 mx-auto bg-white"><hr /></div>
+			<div class="input-group mb-3 w-50 mx-auto">
+				<input
+					id="search-field"
+					type="text"
+					class="form-control"
+					placeholder="Search Team or Player"
+					aria-label="Search"
+					aria-describedby="button-addon2"
+				/>
+				<button
+					onclick="searchTeam()"
+					class="btn btn-outline-light rounded"
+					type="button"
+					id="button-search"
+				>
+					Search
+				</button>
+			</div>
+			<!--  team info -->
+			<main-body id="teamInfo-results" class="container py-">
+				<div
+					class="
+						row
+						shadow
+						d-flex
+						flex-row
+						justify-content-center
+						align-items-center
+					"
+				>
+					<!-- <div
+						class="
+							col-md-4
+							d-flex
+							flex-column
+							justify-content-center
+							align-items-center
+						"
+					>
+						<h3 class="pb-3">Chelsea</h3>
+						<img
+							class="img-fluid"
+							src="https://www.thesportsdb.com/images/media/team/badge/801ev71601713529.png"
+							height="200"
+							width="250"
+						/>
+						<h3 class="pt-3">Founded in</h3>
+					</div>
+					<div
+						class="
+							col-md-4
+							d-flex
+							flex-column
+							justify-content-center
+							align-items-center
+						"
+					>
+						<h3 class="pb-3">Jersey</h3>
+						<img
+							class="img-fluid"
+							src="https://www.thesportsdb.com/images/media/team/jersey/0006oc1626543801.png"
+							height="200"
+							width="300"
+						/>
+						<h3 class="pt-3">Keywords</h3>
+					</div>
+					<div
+						class="
+							col-md-4
+							d-flex
+							flex-column
+							justify-content-center
+							align-items-center
+						"
+					>
+						<h3 class="pb-3">Stadium</h3>
+						<img
+							class="img-fluid rounded"
+							src="https://www.thesportsdb.com/images/media/team/stadium/w1anwa1588432105.jpg"
+							alt=""
+						/>
+						<p class="lead pt-4">Capacity,City</p>
+					</div> -->
+				</div>
+			</main-body>
+			<!--  team results -->
+			<div
+				id="search-result"
+				class="
+					row
+					d-flex
+					flex-row
+					justify-content-center
+					align-items-center
+					py-4
+				"
+			>
+				<!-- left side -->
+				<!-- 	<div
+					class="
+						col-md-6
+						d-flex
+						flex-column
+						justify-content-center
+						align-items-center
+					"
+				>
+					<div class="row d-flex flex-column">
+						<div
+							class="
+								col-md-4
+								d-flex
+								flex-row
+								justify-content-between
+								align-items-center
+								pb-2
+							"
+						>
+							<img src="https://www.thesportsdb.com/images/icons/artist.png" />
+							<b>Teams</b>
+						</div>
+						<div
+							class="
+								col-md-8
+								d-flex
+								flex-column
+								justify-content-between
+								align-items-center
+							"
+						>
+							<div class="row d-flex flex-column">
+								<div class="col-md-8">
+									<img
+										src="https://www.thesportsdb.com/images/media/team/badge/yvwvtu1448813215.png"
+										height="100"
+										width="100"
+										class="ms-3"
+									/>
+								</div>
+								<div class="col-md-4">
+									<div class="text-center">
+										<p class="lead pt-2">Chelsea women</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div> -->
 
-		<main class="container pt-5">
+				<!-- right side -->
+				<!-- <div
+					class="
+						col-md-6
+						d-flex
+						flex-column
+						justify-content-center
+						align-items-center
+					"
+				>
+					<img
+						class="img-fluid rounded-3"
+						height="120"
+						width="200"
+						src="https://www.thesportsdb.com/images/media/team/stadium/w1anwa1588432105.jpg"
+					/>
+					<p class="lead">Stadium</p>
+				</div> -->
+			</div>
+
+			<div class="w-75 mx-auto bg-white"><hr /></div>
+		</main>
+
+		<!-- match results -->
+		<div
+			id="live-results"
+			class="
+				d-flex
+				flex-row flex-wrap
+				justify-content-center
+				align-items-center
+				px-5
+				mx-3
+			"
+		></div>
+		<!-- <div class="w-75 mx-auto bg-white"><hr /></div> -->
+
+		<!-- previous work -->
+		<!-- <main class="container pt-5">
 			<h1 class="text-center text-success">Search Team</h1>
 			<div class="input-group mb-3 w-50 mx-auto">
 				<input
@@ -145,10 +410,10 @@
 				>
 					Search
 				</button>
-			</div>
+			</div> -->
 
-			<!-- team details -->
-			<div
+		<!-- team details -->
+		<!-- <div
 				id="team-results"
 				class="
 					d-flex
@@ -157,10 +422,10 @@
 					rounded
 					border border-secondary
 				"
-			></div>
+			></div> -->
 
-			<!-- team search result -->
-			<div
+		<!-- team search result -->
+		<!-- <div
 				id="search-result"
 				class="
 					container-fluid
@@ -170,8 +435,8 @@
 					g-4
 					py-5
 				"
-			>
-				<!-- <div class="col-md-4">
+			> -->
+		<!-- <div class="col-md-4">
 					<h4>Team Stadium</h4>
 					<img
 						class="img-fluid"
@@ -192,8 +457,8 @@
 						src="https://www.thesportsdb.com/images/media/team/jersey/cpahdv1625745692.png"
 					/>
 				</div> -->
-			</div>
-		</main>
+		<!-- </div>
+		</main> -->
 
 		<!-- Optional JavaScript; choose one of the two! -->
 
@@ -209,6 +474,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     -->
-		<script src="main.js"></script>
+		<!-- <script src="main.js"></script> -->
+		<script src="new.js"></script>
 	</body>
 </html>
